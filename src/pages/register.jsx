@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+const navigate=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle registration logic here
+navigate("/")
+
     console.log('Register:', { email, password, confirmPassword });
   };
 
@@ -27,7 +31,7 @@ const Register = () => {
           <label>Confirm Password:</label>
           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         </div>
-        <button type="submit">Register</button>
+        <button onClick={() =>{navigate("/login")}}type="submit">Register</button>
       </form>
     </div>
   );

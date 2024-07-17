@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import "../App.css"; // Ensure you import the CSS file
 
-function Todo() { // Corrected function name to Todo
+function Todo() {
   const [list, setList] = useState([]);
-  const [input, setInput] = useState('');
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('Low'); // Default to Low priority
 
-  const addTodo = (todo) => {
+  const addTodo = (description, priority) => {
     const newTodo = {
       id: Math.random(),
-      todo: todo,
-      completed: false // Add completed property
+      description: description,
+      priority: priority,
+      completed: false,
     };
     setList([...list, newTodo]);
-    setInput('');
+    setDescription(''); // Clear the description input
+    setPriority('Low'); // Reset priority to Low
   };
 
   const deleteTodo = (id) => {
@@ -34,10 +38,19 @@ function Todo() { // Corrected function name to Todo
       <h1>Pule's To-Do List</h1>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        placeholder="Task Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       />
-      <button onClick={() => addTodo(input)}>Add</button>
+      <select
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
+      >
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button onClick={() => addTodo(description, priority)}>Add</button>
       <ul>
         {list.map((todo) => (
           <li key={todo.id}>
@@ -46,8 +59,11 @@ function Todo() { // Corrected function name to Todo
               checked={todo.completed}
               onChange={() => toggleComplete(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-              {todo.todo}
+            <span className={todo.completed ? 'completed' : ''}>
+              {todo.description} 
+            </span>
+            <span className={`${todo.priority.toLowerCase()}-priority`}>
+              ({todo.priority})
             </span>
             <button onClick={() => deleteTodo(todo.id)}>&times;</button>
           </li>
