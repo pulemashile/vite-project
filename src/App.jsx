@@ -1,47 +1,22 @@
-
-import { useState } from 'react';
-import "./App.css"
+import React from 'react';
+import './App.css'; // Ensure you import the CSS file
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./pages/login.jsx";
+import Todo from "./pages/todo.jsx";
+import Register from './pages/register.jsx';
 
 function App() {
-  const [list, setList] = useState([]);
-  const [input, setInput] = useState('');
-
-  const addTodo = (todo) => {
-    const newTodo = {
-      id: Math.random(),
-      todo: todo,
-    };
-    setList([...list, newTodo]);
-    setInput('');
-  };
-
-  const deleteTodo = (id) => {
-    const newList = list.filter((todo) => todo.id !== id);
-    setList(newList);
-  };
-      
   return (
-    <>
-      <div >
-        <h1>Pule's To-Do List</h1>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}style={{border:"3px solid black"}}
-        />
-        <button onClick={() => addTodo(input)}style={{ borderBottom: '3px solid black', color: 'aqua'}}>Add</button>  
-        <ul>
-          {list.map((todo) => (
-            <li key={todo.id}>
-              {todo.todo}
-              <button onClick={() => deleteTodo(todo.id)}style={{ marginLeft: '10px', color: 'red'}}>&times;</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className="app"> {/* Corrected className */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/todo" element={<Todo />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
 export default App;
-
