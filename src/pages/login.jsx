@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate=useNavigate()
-  
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/todo")  // Handle login logic here
     console.log('Login:', { email, password });
+
+    // Store email and password in local storage
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+
+    navigate("/todo");
   };
-  
 
   return (
     <div>
@@ -21,19 +23,26 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
         </div>
-        <button onClick={() =>{navigate("/todo")}}type="submit">Login</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 }
- 
-     
-  
 
-export default Login
+export default Login;
