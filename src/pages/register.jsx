@@ -9,10 +9,26 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [user, setUser] = useState(null);
+
+  const handleSubmit = (e) => 
+  {
     e.preventDefault();
-    // Handle registration logic here
-    navigate("/");
+    // Handle registration logic here    
+    if(email !== null && password===confirmPassword)
+    {
+      localStorage.setItem("user", JSON.stringify(user)); 
+      setUser( {email , password} );
+    }
+    else{alert("password mismatch ")}
+
+   
+
+   //alert("button pess")
+    console.log(user);
+
+    if(user !== null)
+      navigate("/login"); //login
 
     console.log("Register:", { email, password, confirmPassword });
   };
@@ -21,7 +37,7 @@ const Register = () => {
     <div className="register">
       <h1>Register Page</h1>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit }>
           <div className="form">
             <label>Email:</label>
             <input
@@ -50,9 +66,7 @@ const Register = () => {
             />
           </div>
           <button
-            onClick={() => {
-              navigate("/login");
-            }}
+            
             type="submit"
           >
             Register

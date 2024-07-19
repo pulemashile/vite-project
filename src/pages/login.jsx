@@ -1,20 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [currentUser, setCurrentUser] = useState({});
+
+   
+ 
+               // console.log(currentUser);
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => 
+  {
     e.preventDefault();
-    console.log('Login:', { email, password });
+
+    setCurrentUser( JSON.parse( localStorage.getItem('user') ) )  ;
+    console.log('Login:' );
+    console.log(currentUser );
+      
+      // , { email, password });
 
     // Store email and password in local storage
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-
-    navigate("/todo");
+    // localStorage.setItem('email', email);
+    // localStorage.setItem('password', password);
+    if(email===currentUser.email
+       && password===currentUser.password)
+      {
+        //alert("login to " + currentUser.email)
+        navigate("/todo");
+      }
+      else{ alert("email or password incorrect"); }
   };
 
   return (
@@ -25,7 +43,7 @@ const Login = () => {
           <label>Email:</label>
           <input 
             type="email" 
-            value={email} 
+            // value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             required 
           />
@@ -34,7 +52,7 @@ const Login = () => {
           <label>Password:</label>
           <input 
             type="password" 
-            value={password} 
+            // value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             required 
           />
