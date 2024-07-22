@@ -1,18 +1,18 @@
-body{
-  background-image: url('./assets/pexels-content-pixie-1405717-2736499.jpg');
+
+body {
+  background-image: url('./assets/298397.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  justify-content: center;
-  align-items: center;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: .2s ease-in-out;
   
-}.high-priority {
-  
+}
+
+.high-priority {
   font-weight: bold;
-  background-color: red;
-  
+  color:red
 }
 
 .medium-priority {
@@ -27,20 +27,88 @@ body{
   text-decoration: line-through;
 }
 
-
-.form{
-  
+.form {
   display: flex;
-  justify-content:center;
-  background-image: none;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
+
+  background-color: transparent; /* Remove background color if not needed */
   
-}
-.register{
-  padding: 100px;
-  border:2px solid
-  
-  
+
 }
 
+.register {
+  padding: 20px;
+  border: 1px solid white;
+  height: 500px;
+  width: 400px;
+  backdrop-filter: blur(6dpx);
   
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input{
+  background-color: white;
+  padding: 12px;
+  margin-bottom: 20px;
+  width: 250px;
+  border: none;
+  outline: none;
+  align-items: center;
+  border-radius: 25px;
+  color: white;
+  
+  
+}
+label{
+  font-size: large;
+  color:white;
+}
+
+button{ 
+  background-color:white ;
+  width: 50%;
+  height: 40px;
+  border-radius: 25px;
+  margin-left: 25%;
+
+
+}
+button:active{
+  background-color: wheat;
+
+}
+.title{
+  color: wheat;
+}
+.delete{
+  width: auto;
+  height:auto
+
+  
+}.checkbox{
+  height: auto;
+  width: fit-content;
+}
+.add{
+  height: auto;
+  width:auto
+}
+.priority{
+  width: 300;
+  height: auto;
+  background-color: aqua;
+  border-radius: 10px solid;
+}
+.dark-mode{
+  background: #242526;
+  transition: .2s ease-in-out;
+}
+

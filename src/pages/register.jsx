@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "../App.css";
 
 const Register = () => {
@@ -11,66 +10,51 @@ const Register = () => {
 
   const [user, setUser] = useState(null);
 
-  const handleSubmit = (e) => 
-  {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Handle registration logic here    
-    if(email !== null && password===confirmPassword)
-    {
-      localStorage.setItem("user", JSON.stringify(user)); 
-      setUser( {email , password} );
+    if(email !== null && password === confirmPassword) {
+      setUser({ email, password });
+      localStorage.setItem("user", JSON.stringify({ email, password })); 
+      navigate("/login");
+    } else {
+      alert("Password mismatch");
     }
-    else{alert("password mismatch ")}
-
-   
-
-   //alert("button pess")
-    console.log(user);
-
-    if(user !== null)
-      navigate("/login"); //login
-
-    console.log("Register:", { email, password, confirmPassword });
   };
 
   return (
-    <div className="register">
-      <h1>Register Page</h1>
-      <div>
-        <form onSubmit={ handleSubmit }>
-          <div className="form">
-            <label>Email:</label>
+    <div className="form">
+      <div className="register">
+        <h1 className="title">Register Page</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            {/* <label>Email:</label> */}
             <input
-              type="email"
+              type="email" placeholder="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div>
-            <label>Password:</label>
+            {/* <label>Password:</label> */}
             <input
-              type="password"
+              type="password" placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
           <div>
-            <label>Confirm Password:</label>
+            {/* <label>Confirm Password:</label> */}
             <input
-              type="password"
+              type="password" placeholder="confirm password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
-          <button
-            
-            type="submit"
-          >
-            Register
-          </button>
+            <button type="submit">Register</button>
         </form>
       </div>
     </div>

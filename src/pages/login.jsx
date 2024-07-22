@@ -36,22 +36,23 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
+    <div className="form">
+    <div className="register">
+      <h1 className="title">Login Page</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
+          {/* <label>Email:</label> */}
           <input 
-            type="email" 
+            type="email" placeholder="email"
             // value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             required 
           />
         </div>
         <div>
-          <label>Password:</label>
+          {/* <label>Password:</label> */}
           <input 
-            type="password" 
+            type="password" placeholder="password"
             // value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             required 
@@ -59,6 +60,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+    </div>
     </div>
   );
 }
