@@ -43,7 +43,7 @@ body {
   border: 1px solid white;
   height: 500px;
   width: 400px;
-  backdrop-filter: blur(6dpx);
+  backdrop-filter: blur(6px);
   
   border-radius: 25px;
 
@@ -55,7 +55,7 @@ body {
 }
 
 input{
-  background-color: white;
+  background-color:rgba(0,0, 0, 0.5);
   padding: 12px;
   margin-bottom: 20px;
   width: 250px;
@@ -63,17 +63,21 @@ input{
   outline: none;
   align-items: center;
   border-radius: 25px;
-  color: white;
+  color:white;
+  font-size: larger;
   
   
 }
 label{
   font-size: large;
-  color:white;
+  color:white
 }
 
 button{ 
-  background-color:white ;
+  background-color: rgba(0,0, 0, 0.5);
+  color: aliceblue;
+  border:none;
+  
   width: 50%;
   height: 40px;
   border-radius: 25px;
@@ -86,7 +90,7 @@ button:active{
 
 }
 .title{
-  color: wheat;
+  color: #F7F6DC
 }
 .delete{
   width: auto;
@@ -104,11 +108,27 @@ button:active{
 .priority{
   width: 300;
   height: auto;
-  background-color: aqua;
+  background-color: #64CCC5;
   border-radius: 10px solid;
 }
 .dark-mode{
   background: #242526;
   transition: .2s ease-in-out;
 }
+ul > li > div > span {
+  color: white;
+  font-size: larger;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 
+.button-container button {
+  margin-right: 10px;
+}
+
+.button-container button:last-child {
+  margin-right: 0;
+}
